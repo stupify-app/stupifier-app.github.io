@@ -1,0 +1,196 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    1 Player · Stupifier
+{% endblock %}
+
+{% block backBtn %}
+<!--ICON-->
+<!--https://fontawesome.com/v4.7.0/icon/arrow-left-->
+<li class='nav item-active'>
+    <a href='/' class ='nav-link' style= 'margin:text-decoration: none;'>Stupifier</a>
+</li>
+{% endblock%}
+
+{% block nav %}
+<!--Score-->
+    <li class='nav item-active'>
+        <h6 class='nav-link' style='margin:0px 7px;'>Score: {{score}}</h6>
+    </li>
+    <ul class="navbar-nav" id='myLinks1'>
+    <!--Instructions btn-->
+        <li class="nav-item active">
+            <button id='instructions' class='btn btn-light' style='width:max-content; margin:0px 10px;'><i class="fa fa-question-circle" aria-hidden="true"></i></button>
+        </li>
+    <!--Play Mode btn-->
+        <li class="nav-item active">
+            <a href="/multi1"><button class='btn btn-primary; nav-link' style='width:max-content; background-color: rgba(10, 0, 0, 0.5); color:white; margin:0px 7px'>Multiplayer Mode</button></a>
+        </li>
+        <!--Logout-->
+        <li class="nav-item active">
+            <a class="nav-link" href='/login' style='width:max-content; margin:0px 0px 0px 10px; align-self:flex-end'>Logout</a>
+        </li>
+    </ul>
+
+  <button id='menu-btn' class="navbar-toggler" type="button" onclick='menuOpen()'><i class="fa fa-bars" aria-hidden="true"></i></button>
+
+{% endblock %}
+
+
+{% block main %}
+
+    <style>
+        body{
+            background-color:orange;
+        }
+
+
+        .g-btn {
+            margin: 0px 10px;
+            padding: 7px 16px;
+            font-size:18px;
+            font-weight: 500;
+            background-color: white;
+            box-shadow: none
+        }
+
+            .g-btn:hover {
+            box-shadow: none
+        }
+    </style>
+
+        <!-- myLinks2 -->
+        <!-- JUSTIFY-SELF >>>>>> https://developer.mozilla.org/en-US/docs/Web/CSS/justify-self -->
+        <div id='menu' class='menu'>
+            <ul class="navbar-nav" id='myLinks2'>
+            <!--Instructions btn-->
+                <button id='instructions' class='btn btn-light' onclick='openModal()' style='width:max-content; margin:0px 10px;'><i class="fa fa-question-circle" aria-hidden="true"></i></button>
+            <!--Play Mode btn-->
+                <a href="/multi1"><button class='btn btn-primary; nav-link' style='width:max-content; padding: 10px 20px; background-color: rgba(10, 0, 0, 0.5); color:white; margin:0px 7px'>Multiplayer Mode</button></a>
+            <!--Logout-->
+                <a class="nav-link" href="/login" style="width:max-content; margin:0px 0px 0px 10px; align-self:flex-end; color:white">Logout</a>
+            </ul>
+        </div>
+
+
+
+    <!-- content -->
+
+
+    <div class='main_div'>
+
+        <div style='height:70%; width:100%; overflow:hidden;margin:10px 0px 50px 0px; position: sticky; display:flex; justify-content:center; border-style:none'>
+            <iframe id='innerSpace' title="Results"></iframe>
+        </div>
+
+        <div style='max-content; width:100%; position: sticky; display:flex; flex-direction:column; justify-content:center; align-items:center; border-style:none'>
+            <h4 id='t'>What is the search for these results?</h4>
+            <form action='/player' method='post'>
+                <div id='form-inp' class='form-group'>
+                    <input type='text' name='guess' id='guess' class='form-control' autofocus autocomplete='off' placeholder='Guess'>
+                    <button type='submit' id='guess-btn' class='g-btn' >Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<!-- MODAL-->
+
+    <div id='div_modal' class='div_modal'>
+         <!--The window-->
+        <div id='pop-up' class='modal'> <!--id='pop-up' class='modal'-->
+
+        <!--TEMPORARY Spacer-->
+        <!--TO PUSH THE TITLE DOWN BECAUSE IT'S HIDDEN >>>>>>>>>> ERROR!!) -->
+        <div style='max-height:20vh;min-height:20vh;'></div>
+            <!--<h3 class='page-title' style='font-size:18px; margin: 15px; color: rgba(0, 0, 0, 0.3); align-self: center'>Stupifier</h3>-->
+            <h3 style='font-family: Freckle Face, cursive; font-size:38px; font-weight:800; color: rgba(0, 0, 0, 1); align-self: center'>How to Play</h3>
+            <br>
+            <p> The Stupifier is a image-based search engine made to retrieve weird search results! Your job is to guess what word produced those results. </p>
+            <br>
+            <h6>1 Player Mode</h6>
+            <p>In solo mode, you will be playing against the machine. The program will pick a random word and you have to guess what it was, based on the results.</p>
+            <br>
+            <h6>Multiplayer Mode</h6>
+            <p>In multiplayer, you can play with a friend and they will choose the word for you to guess! After they choose it, you can then look at the screen and try to guess. </p>
+            <br>
+            <div style='text-align:center'>
+                <h5>:: Disclaimer! ::</h5>
+                <p> Graphic images may appear </p>
+            </div>
+            <button id='close' class="btn btn-secondary">Close</button>
+        </div>
+    </div>
+
+
+
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="crossorigin="anonymous"></script>
+
+    <script>
+        let is = document.getElementById('innerSpace');
+         $.ajax({
+                url: '/dic',
+                action: 'GET',
+                // when the server returns data, the success method is run
+                success: function (data) {
+                      query = encodeURI(data);
+                      is.src = `https://search.givewater.com/serp?qc=images&q=weirdest+${query}`;
+                }});
+
+    //--------------
+
+   // Instructions Modal
+    //// TOGGLE HIDE AND SHOW >>>>>> https://www.w3schools.com/howto/howto_js_toggle_hide_show.asp
+        let btn = document.querySelector("#instructions");
+        let divM = document.getElementById('div_modal');
+        let pop = document.querySelector(".modal");
+        let close = document.querySelector("#close");
+
+        btn.onclick = function open(){
+            divM.style.display = 'flex';
+            divM.style.flexDirection = 'column';
+            divM.style.justifyContent = 'center';
+            divM.style.alignItems = 'center';
+            pop.style.display = 'flex';
+            pop.style.flexDirection = 'column';
+            pop.style.alignSelf = 'center';
+        };
+
+        function openModal(){
+            divM.style.display = 'flex';
+            divM.style.flexDirection = 'column';
+            divM.style.justifyContent = 'center';
+            divM.style.alignItems = 'center';
+            pop.style.display = 'flex';
+            pop.style.flexDirection = 'column';
+            pop.style.alignSelf = 'center';
+        }
+
+        close.onclick = function(){
+            divM.style.display = 'none';
+            pop.style.display = 'none';
+        };
+
+        //--------------
+
+       // Open Menu
+
+
+        let menuBtn = document.getElementById('menu-btn');
+        let menu = document.getElementById('menu');
+
+        menuBtn.onclick = function menuOpen() {
+
+           if (menu.style.display === 'none') {
+               menu.style.display = 'flex';
+               menu.style.flexDirection = row;
+           }
+           else {
+               menu.style.display = 'none';
+           }
+
+       };
+
+
+    </script>
+{% endblock %}

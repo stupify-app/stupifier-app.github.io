@@ -1,0 +1,122 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+ Result
+{% endblock %}
+
+{% block backBtn %}
+
+<a href='/' class ='nav-link' style= 'text-decoration: none'>Stupifier</a>
+
+{% endblock %}
+
+{% block nav %}
+<!--Score-->
+    <li class='nav item-active'>
+        <h6 class='nav-link' style='margin:0px 7px'>Score: {{score}}</h6>
+    </li>
+<!--Instructions btn-->
+    <li class='nav item-active'>
+        <button id='instructions' class='btn btn-light' style='margin:0px 7px'><i class="fa fa-question-circle" aria-hidden="true"></i></button>
+    </li>
+{% endblock%}
+
+{% block main %}
+
+    <style>
+    body{
+        background-color:orange;
+    }
+    .g-btn, g-btn:hover {
+        align-items: center;
+    }
+    .g-btn:hover {
+        box-shadow: none;
+        text-decoration:none;
+    }
+    </style>
+    <div class='main_div'>
+    <h5 id='result' style='font-weight: 400;'>{{title}}</h2>
+
+
+    <div class='div-results' style='text-align:left;'>
+        <h2 id='word' class='results' style='margin-bottom:5px; font-weight: 400; rgba(0,0,0, 0.5)'>{{t1}}<b style='color:rgba(236,88,0, 1)'> {{word}}</b></p>
+        <h2 id='guess' class='results' style='margin-bottom:5px; font-weight: 400; rgba(0,0,0, 0.5)'><span>{{t2}}<b> {{guess}}</b></span></p>
+    </div>
+
+
+    <h4 style='margin-bottom:5vh;'>Your Score: {{score}}</h4>
+
+
+    <a href='/'><button class='g-btn'>Try Again &nbsp<i class="fa fa-repeat" aria-hidden="true"></i></button></a>
+
+
+
+<!-- MODAL -->
+
+    <div id='div_modal' class='div_modal'>
+         <!--The window-->
+        <div id='pop-up' class='modal'> <!--id='pop-up' class='modal'-->
+
+        <!--TEMPORARY Spacer-->
+        <!--TO PUSH THE TITLE DOWN BECAUSE IT'S HIDDEN >>>>>>>>>> ERROR!!) -->
+        <div style='max-height:20vh;min-height:20vh;'></div>
+            <!--<h3 class='page-title' style='font-size:18px; margin: 15px; color: rgba(0, 0, 0, 0.3); align-self: center'>Stupifier</h3>-->
+            <h3 style='font-family: Freckle Face, cursive; font-size:38px; font-weight:800; color: rgba(0, 0, 0, 1); align-self: center'>How to Play</h3>
+            <br>
+            <p> The Stupifier is a image-based search engine made to retrieve weird search results! Your job is to guess what word produced those results. </p>
+            <br>
+            <h6>1 Player Mode</h6>
+            <p>In solo mode, you will be playing against the machine. The program will pick a random word and you have to guess what it was, based on the results.</p>
+            <br>
+            <h6>Multiplayer Mode</h6>
+            <p>In multiplayer, you can play with a friend and they will choose the word for you to guess! After they choose it, you can then look at the screen and try to guess. </p>
+            <br>
+            <div style='text-align:center'>
+                <h5>:: Disclaimer! ::</h5>
+                <p> Graphic images may appear </p>
+            </div>
+            <button id='close' class="btn btn-secondary">Close</button>
+        </div>
+    </div>
+
+
+    <script>
+
+    // ------------------
+
+   // Instructions Modal
+    //// TOGGLE HIDE AND SHOW >>>>>> https://www.w3schools.com/howto/howto_js_toggle_hide_show.asp
+        let btn = document.querySelector("#instructions");
+        let divM = document.getElementById('div_modal');
+        let pop = document.querySelector(".modal");
+        let close = document.querySelector("#close");
+
+        btn.onclick = function(){
+            divM.style.display = 'flex';
+            divM.style.flexDirection = 'column';
+            divM.style.justifyContent = 'center';
+            divM.style.alignItems = 'center';
+            pop.style.display = 'flex';
+            pop.style.flexDirection = 'column';
+            pop.style.alignSelf = 'center';
+        };
+
+        close.onclick = function(){
+            divM.style.display = 'none';
+            pop.style.display = 'none';
+        };
+
+    // ------------------
+
+        let result = document.querySelector('#result');
+         if (result.innerHTML === 'Incorrect...') {
+             result.style.color = 'rgba(0,0,0, 0.4)';
+         }
+         if (result.innerHTML === 'Correct!') {
+             result.style.color = 'rgb(8,127,72, 1)';
+             result.style.fontWeight = 500;
+         }
+
+    </script>
+{% endblock %}

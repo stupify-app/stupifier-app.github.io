@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Register · Stupifier
+{% endblock %}
+
+{% block nav %}
+    <li class='nav item-active'>
+        <a href='/login' class='nav-link'><h6>Login</h6></a>
+    </li>
+    <li class='nav item-active'>
+        <a href='/register' class='nav-link'><h6>Register</h6></a>
+    </li>
+{% endblock %}
+
+{% block main %}
+    <div class='main_div'>
+        <h6 style='color: rgba(0,0,0,0.5)'>Register</h6>
+            <br>
+        <div class='form-container' style="justify-content: center; align-items:center;">
+            <form action='/register' method= 'post'>
+                <p style="color:red;">{{text}}</p>
+                <div class='form-group'>
+                    <!-- Get username -->
+                    <input type='text' name='username' placeholder='Username' class='form-control' autofocus autocomplete='off'>
+                </div>
+                <div class='form-group'>
+                    <!-- Get password -->
+                    <input type='password' name='password' placeholder='Password' class='form-control' autocomplete='off'>
+                </div>
+                <div class='form-group'>
+                    <!-- Get password again -->
+                    <input type='password' name='conf' placeholder='Confirmation' class='form-control' autocomplete='off'>
+                </div>
+                <!-- Submit to /register -->
+                <button class='btn btn-primary' type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

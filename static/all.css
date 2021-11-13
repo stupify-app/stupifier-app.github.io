@@ -1,0 +1,502 @@
+:root {
+    --blu: rgb(8,132,187, 1);
+}
+
+
+nav {
+    height: 60px;
+    display: block;
+    justify-content: center;
+    align-items:center;
+    color:#FFFFFF;
+    background-color:orange;
+    /*border-style:groove;*/
+    font-family: 'Roboto', sans-serif;
+}
+
+.topnav {
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+}
+
+.navScore{
+    justify-content: center;
+    align-items:center;
+    /*margin:30px;*/
+    /*float:left;*/
+}
+
+.title-block {
+    border-style:none;
+    margin-top:55px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+}
+
+.page-title {
+    font-family: 'Freckle Face', cursive;
+    margin:35px 0px 25px 0px;
+    font-size: 96px;
+    color:var(--blu);
+    /*border-style:groove;*/
+}
+
+.page-subtitle {
+    font-style: italic;
+    font-size: 34px;
+    font-weight: 300;
+    margin-bottom: 5vh;
+}
+
+.error-zone{
+    height: 30px;
+    justify-content:center;
+    align-items: center;
+    /*border-style:groove;*/
+}
+
+.howto-title {
+    font-family: Freckle Face, cursive;
+    font-size:38px;
+    font-weight:800;
+    margin-top: 20vh;
+    color: rgba(0, 0, 0, 1);
+    align-self: center;
+}
+
+.howto-btn {
+    height: 42px;
+    width:max-content;
+    margin:20px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 1);
+    color: var(--blu);
+    border-radius:100px;
+    border-style: solid;
+    /*BORDER WIDTH >>>> https://www.w3schools.com/cssref/pr_border-width.asp*/
+    border-width: 2px;
+    border-color: rgb(8,132,187, 0);
+}
+
+.howto-btn:hover {
+    border-color: var(--blu);
+}
+
+#innerSpace {
+    display:flex;
+    height:200%;
+    width:60vw;
+    margin-top:-120px;
+    border-style:none;
+}
+
+#guess-btn {
+    margin: 0px 0px 0px 10px;
+}
+
+.g-buttons{
+    width:100%;
+    /*padding:0% 10%;*/
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    margin-top:10vh;
+    /*border-style:groove;*/
+}
+
+.g-btn {
+    width: max-content;
+    display:inline-flex;
+    /*margin:0 30%;*/
+    margin: 0px 10px;
+    position:static;
+    padding: 10px 20px;
+    font-size:18px;
+    font-weight: 700;
+    background-color: rgba(255,255,255,1);
+    /*Shadows >>>> https://www.w3schools.com/cssref/playit.asp?filename=playcss_box-shadow&preval=20px%2020px%2020px%2010px%20red*/
+    /*box-shadow:12px 10px 50px 5px  rgba(0,0,0,0.4);*/
+    box-shadow: 10px 12px 35px 5px  rgba(0,0,0,0.15);
+    /*font-style: italic;*/
+    text-decoration: none;
+    border-style: none;
+}
+
+.g-btn:hover {
+    background-color: var(--blu);
+    color: rgba(25,50,50,1);
+    box-shadow: 10px 0px 45px 5px  rgba(230,185,50,1);
+    /*box-shadow: none;*/
+}
+
+
+.gifs-index{
+    height: 170px;
+    width: 170px;
+    margin:170px 40px;
+}
+
+
+body{
+    height:100vh;
+    width:100vw;
+    display:flex;
+    flex-direction:column;
+}
+
+main {
+    height:100%;
+    width:100%;
+    /*padding:55px 0px;*/
+    display: flex;
+    flex-direction:row;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    font-family: 'Work sans', sans-serif;
+    /*border-style:groove;*/
+}
+
+.main_div, div_modal {
+    height:100%;
+    width:100%;
+    position:relative;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Work sans', sans-serif;
+    /*border-style:groove;*/
+}
+
+/* HOW TO STACK ELEMENTS (INSTEAD OF THEM BEING SIDE BY SIDE) >>>> https://css-tricks.com/how-to-stack-elements-in-css/*/
+.div_modal {
+    height:100%;
+    width:100%;
+    position:fixed;
+    /*padding:55px 0px;*/
+    z-index: 0;
+    display: none;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Work sans', sans-serif;
+    background-color:rgba(255,165,0, 0.6);
+}
+
+
+.modal{
+    width:40%;
+    height:70%;
+    position: fixed;
+    display:none;
+    justify-content:center;
+    z-index: 1;/*Sit on top (layers)*/
+    overflow: scroll; /*Scroll*/
+    margin: 5% 30%;
+    padding:40px 60px;
+    font-family: 'Work sans', sans-serif;
+    text-align:left;
+    background-color:#FFFFFF;
+    border: 1px solid rgba(20,30,170, 0.3); /*Concatenate properties (border-width, border-type, border-color)*/
+    border-radius:5px;
+    border-style: groove;
+}
+
+
+.col1, .col2, .col3 {
+    height:100%;
+    width:66vw;
+        /*padding:55px 0px;*/
+    display: flex;
+    flex-direction:column;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    font-family: 'Work sans', sans-serif;
+    /*border-style:groove;*/
+}
+
+.col1 {
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.col3 {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#t {
+    text-align: left;
+    margin-bottom:20px;
+}
+
+#form-inp {
+    display: flex;
+    flex-direction:row;
+    align-items:center;
+}
+
+.div-results {
+    padding: 10vh 20px 20vh 20px;
+    text-align:left;
+}
+
+.results {
+    margin-bottom:5px;
+    color: rgba(0,0,0, 0.9);
+    font-weight: 400;
+}
+
+.menu {
+    /*align-self: stretch;*/
+    /*height: 95vh;*/
+    /*top: 70px;*/
+    /*right: 0px;*/
+    /*position: absolute;*/
+    /*z-index: 1;*/
+    /*flex-direction: row;*/
+    /*justify-content: flex-start;*/
+    /*background-color: rgba(0,0,0, 0.4);*/
+    display: none;
+    margin: -40px 0px;
+    padding: 20px;
+    align-self: stretch;
+    position: relative;
+    z-index: 1;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: rgba(146,101,35, 1);
+}
+
+#myLinks2 {
+    display: none;
+}
+
+#cont1 {
+    width: 100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:center;
+    /*border-style:groove;*/
+}
+
+
+.form-container {
+    background-color: rgba(0,123,80,0.1);
+    padding: 30px;
+    border-radius:10px;
+}
+
+
+
+#close{
+    align-self:flex-end;
+    width: max-content;
+}
+
+h1 {
+    font-family: 'Freckler-Face', cursive;
+    font-size: 42px;
+    color: black;
+}
+
+h2 {
+    font-weight: 600;
+}
+
+h6 {
+    font-weight: 600;
+}
+
+
+hr {
+    border-color: rgba(0,0,0,1);
+}
+
+a, a:hover {
+    text-decoration:none;
+}
+
+li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:flex-start;
+    list-style-type: none;
+}
+
+/* RESPONSIVE */
+
+/* If it's on mobile */
+@media screen and (max-width: 800px) {
+
+
+nav {
+    width: 100vw;
+    padding: 10px 30px 0px 0px;
+    align-items:center;
+}
+
+.topnav {
+    display: flex;
+    flex-direction:row;
+    align-items: flex-end;
+}
+
+.gifs-index{
+    height: 120px;
+    width: 120px;
+    margin:0vh 0vw;
+}
+
+.page-title {
+    font-family: 'Freckle Face', cursive;
+    margin:0px 0px 25px 0px;
+    font-size: 74px;
+    color:var(--blu);
+    /*border-style:groove;*/
+}
+
+.page-subtitle {
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+
+.howto-title {
+    margin-top: 2vh;
+}
+
+
+#innerSpace {
+    display:flex;
+    height:200%;
+    width:100vw;
+    margin-top:-130px;
+    border-style:none;
+}
+
+
+#guess-btn {
+    margin: 10px;
+}
+
+.g-buttons{
+    margin-top:7vh;
+    flex-direction:column;
+}
+
+.g-btn {
+    display:flex;
+    flex-direction: row;
+    padding: 10px 20px;
+    font-size:16px;
+}
+.main_div {
+    padding: 0px 6vw;
+}
+
+
+.div_modal {
+    top:0px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin:0px;
+    padding: 0px;
+}
+
+.modal{
+    height: 70vh;
+    width:100vw;
+    justify-content: flex-start;
+    position: relative;
+    padding: 30px 30px;
+}
+
+main {
+    width: 100vw;
+    flex-direction:column;
+    justify-content: center;
+    align-items:center;
+    padding: 5vh 0px 5vh 0px;
+}
+
+.col1, .col3 {
+    height: max-content;
+    width: max-content;
+    /*border-style:groove;*/
+    padding: 0vw;
+}
+
+.col1 {
+    height: max-content;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+}
+
+.col2 {
+    height: max-content;
+    width: max-content;
+    margin:0px 0px 75px 0px;
+    /*border-style:groove;*/
+}
+
+.col3 {
+    display: none;
+}
+
+#t {
+    text-align: center;
+}
+
+#form-inp {
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.div-results {
+    text-align:center;
+    padding: 7vh 20px 21vh 20px;
+}
+
+/*FONT SIZE >>>>> https://www.w3schools.com/cssref/pr_font_font-size.asp*/
+.results {
+    margin-bottom:5px;
+    color: rgba(0,0,0, 0.9);
+    font-size: xx-large;
+    font-weight: 400;
+    text-align: center;
+}
+
+.menu {
+    display:none;
+}
+
+#myLinks1 {
+    display: none;
+}
+
+#myLinks2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+ul{
+    padding-left: 15px;
+}
+
+
+}

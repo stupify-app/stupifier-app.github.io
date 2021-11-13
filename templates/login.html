@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Log In · Stupifier
+{% endblock %}
+
+{% block nav %}
+<!--Score-->
+    <li class="nav-item active">
+        <a class="nav-link" href='/login' style='margin:0px 5px 0px 10px'>Logout</a>
+    </li>
+    <li class='nav item-active'>
+        <a href='/register' class='nav-link'><h6>Register</h6></a>
+    </li>
+{% endblock %}
+
+
+
+{% block main %}
+    <div class='main_div'>
+        <h1 class="page-title" style="font-size:25px; color:black; margin:25px;">Stupifier</h1>
+
+        <div class='form-container'>
+            <div class='error-zone'>
+                <small style='color:red'>{{text}} <a href='/register' style='color:red; text-decoration: underline;'>{{register_text}}</a></small>
+            </div>
+            <form action="/login" method="post" style='justify-content:center'>
+                <div class="form-group">
+                    <!-- Get Username -->
+                    <input type='text' name='username' class='form-control' Placeholder='Username' autofocus autocomplete='off'>
+                    <br>
+                <div class="form-group">
+                    <!-- Get Password -->
+                    <input type='password' name='password' class='form-control' Placeholder='Password' autocomplete='off'>
+                </div>
+                    <!-- Submit to /login -->
+                    <button class="btn btn-primary" type='submit'>Login</button>
+            </form>
+        </div>
+
+        <br>
+        <p style='color:ligh-blue;'>Don't have an account yet? <a href='/register' style='text-decoration: underline;'>Register</a></p>
+    </div>
+
+
+
+{% endblock %}

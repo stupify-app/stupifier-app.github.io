@@ -1,0 +1,125 @@
+{% extends "layout.html"%}
+
+{% block title %}
+    Stupifier! A weird search results game
+{% endblock %}
+
+{% block nav %}
+  <div id="navbarNav">
+        <!--Logout-->
+        <li class="nav-item active" style='float:right'>
+            <a class="nav-link" href='/login' style='width:max-content; margin:0px 0px 0px 10px; align-self:flex-end'>Logout</a>
+        </li>
+    </ul>
+  </div>
+
+{% endblock %}
+
+{% block main %}
+    <style>
+        body{
+            background-color:orange;
+        }
+    </style>
+
+    <div class= 'col1'>
+        <img class='gifs-index' src='/static/left2.gif' alt="Gif with many stupid images">
+    </div>
+
+    <div class= 'col2'>
+
+        <div class='title-block'>
+            <h1 class="page-title">Stupifier!</h1>
+            <h4 class='page-subtitle'>The ultimate guessing game</h4>
+
+
+        <!-- Instructions button -->
+            <!-- Sizing Icon https://fontawesome.com/how-to-use/on-the-web/styling/sizing-icons -->
+            <button id='instructions' class='howto-btn' style='height: 42px'><i class="fa fa-question-circle fa-2x" aria-hidden="true"></i></button>
+
+
+         <!-- Player 1 button -->
+            <div class='g-buttons'>
+                <div style='width:20%; display:flex; justify-content:space-around; align-items:center;'>
+                    <form action="/player" method="get">
+                        <div class="form-group" style='width:100%;'>
+                            <button class='g-btn'>1 Player</button>
+                        </div>
+                    </form>
+         <!-- Spacer dos botões-->
+                    <button style='width: 70px; border-style: none; background-color: rgba(255,255,255,0); color: rgba(255,255,255,0)'>spacer</button>
+
+         <!-- Multiplayer button -->
+                    <form action="/multi1" method="get">
+                        <div class="form-group" style='width:100%;'>
+                            <button class='g-btn'>Multiplayer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class= 'col3'>
+         <img class='gifs-index' src='/static/left2.gif' alt="Gif with many stupid images">
+    </div>
+
+<!-- MODAL -->
+
+    <div id='div_modal' class='div_modal'>
+         <!--The window-->
+        <div id='pop-up' class='modal'> <!--id='pop-up' class='modal'-->
+
+            <!--<h3 class='page-title' style='font-size:18px; margin: 15px; color: rgba(0, 0, 0, 0.3); align-self: center'>Stupifier</h3>-->
+            <h3 class='howto-title'>How to Play</h3>
+            <br>
+            <p> The Stupifier is a image-based search engine made to retrieve weird search results! Your job is to guess what word produced those results. </p>
+            <br>
+            <h6>1 Player Mode</h6>
+            <p>In solo mode, you will be playing against the machine. The program will pick a random word and you have to guess what it was, based on the results.</p>
+            <br>
+            <h6>Multiplayer Mode</h6>
+            <p>In multiplayer, you can play with a friend and they will choose the word for you to guess! After they choose it, you can then look at the screen and take a guess. </p>
+            <br>
+            <div style='text-align:center'>
+                <h5>:: Disclaimer! ::</h5>
+                <p> Graphic images may appear </p>
+            </div>
+            <button id='close' class="btn btn-secondary">Close</button>
+        </div>
+    </div>
+
+
+    <script>
+
+    // Instructions Modal
+    //// TOGGLE HIDE AND SHOW >>>>>> https://www.w3schools.com/howto/howto_js_toggle_hide_show.asp
+        let btn = document.querySelector("#instructions");
+        let divM = document.getElementById('div_modal');
+        let pop = document.querySelector(".modal");
+        let close = document.querySelector("#close");
+
+        btn.onclick = function(){
+            divM.style.display = 'flex';
+            divM.style.flexDirection = 'column';
+            divM.style.justifyContent = 'center';
+            divM.style.alignItems = 'center';
+            pop.style.display = 'flex';
+            pop.style.flexDirection = 'column';
+            pop.style.alignSelf = 'center';
+        };
+
+        close.onclick = function(){
+            divM.style.display = 'none';
+            pop.style.display = 'none';
+        };
+
+        // window.onclick = function(event){
+        //     if(event.target == pop) {
+        //         pop.style.display = 'none';
+        //     }
+        // };
+    </script>
+
+{% endblock %}
